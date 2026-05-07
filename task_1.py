@@ -1,4 +1,4 @@
-from typing import List, Optional, Union
+from typing import List
 
 class Circle:
     """
@@ -22,7 +22,7 @@ class Circle:
         Args:
             radius (float, optional): The radius of the circle. Defaults to 1.
         """
-        self.radius: float = radius
+        self.radius = radius
         Circle.all_circles.append(self)
     
     def area(self) -> float:
@@ -51,18 +51,7 @@ class Circle:
         Returns:
             float: The sum of areas of all circles.
         """
-        total: float = 0
+        total = 0
         for circle in Circle.all_circles:
             total += circle.area()
         return total
-
-
-c1 = Circle()
-c2 = Circle(7)
-c3 = Circle(5)
-print(c2.area())
-print(c3)
-print(Circle.pi)
-print(Circle.all_circles)
-print(Circle.total_area())
-print(len(c3.__class__.all_circles))
