@@ -1,57 +1,66 @@
-from typing import List
-
 class Circle:
-    """
-    A class representing a circle.
+    """A circle class that tracks all instances and provides area calculations."""
     
-    Class Attributes:
-        pi (float): The value of pi (3.1415).
-        all_circles (List[Circle]): A list of all created Circle instances.
-    
-    Instance Attributes:
-        radius (float): The radius of the circle.
-    """
-    
-    pi: float = 3.1415
-    all_circles: List['Circle'] = []
-    
-    def __init__(self, radius: float = 1) -> None:
+    pi = 3.1415
+    all_circles = []
+
+    def __init__(self, radius: float = 1.0) -> None:
         """
-        Initialize a new Circle instance.
-        
-        Args:
-            radius (float, optional): The radius of the circle. Defaults to 1.
+        Initialize a circle with given radius.
+
+        Parameters:
+            radius: Radius of the circle (default is 1.0)
         """
         self.radius = radius
         Circle.all_circles.append(self)
-    
+
     def area(self) -> float:
         """
-        Calculate the area of the circle.
-        
+        Calculate area of the circle.
+
         Returns:
-            float: The area of the circle (π * r²).
+            Area value using pi * radius^2
         """
-        return Circle.pi * self.radius ** 2
-    
+        return Circle.pi * (self.radius ** 2)
+
     def __str__(self) -> str:
         """
-        Return string representation of the circle's radius.
-        
+        Return string representation for printing.
+
         Returns:
-            str: The radius as a string.
+            Radius as a string
         """
         return str(self.radius)
-    
+
+    def __repr__(self) -> str:
+        """
+        Return unambiguous string representation for debugging.
+
+        Returns:
+            Radius as a string for list and console output
+        """
+        return str(self.radius)
+
     @staticmethod
     def total_area() -> float:
         """
-        Calculate the total area of all created circles.
-        
+        Calculate total area of all created circle instances.
+
         Returns:
-            float: The sum of areas of all circles.
+            Sum of areas for every circle in all_circles
         """
-        total = 0
+        total = 0.0
         for circle in Circle.all_circles:
             total += circle.area()
         return total
+
+
+c1 = Circle()
+c2 = Circle(7)
+c3 = Circle(5)
+print(c2.area())
+print(c3)
+print(Circle.pi)
+print(Circle.all_circles)
+print(Circle.total_area())
+print(len(c3.__class__.all_circles))
